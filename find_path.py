@@ -1,6 +1,6 @@
 import random
 
-def generate_free_number(map: list):
+def generate_free_place(map: list):
     x = random.randint(0,9)
     y = random.randint(0,19)
     
@@ -9,4 +9,3 @@ def generate_free_number(map: list):
         y = random.randint(0,19)
 
     return (x,y)
-
