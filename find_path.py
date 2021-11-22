@@ -1,6 +1,6 @@
 import random
 
-class Point:
+class Cell:
     x = 0
     y = 0
     g = 0
@@ -38,7 +38,7 @@ class Point:
                 if map[pos[0]][pos[1]] != 'X':
                     is_closed = list(filter(lambda el: el.x == pos[0] and el.y == pos[1], closed))
                     if len(is_closed) == 0:
-                       p = Point(pos[0], pos[1], self)
+                       p = Cell(pos[0], pos[1], self)
                        p.calculate_remoteness(start, end)
                        points.append(p)
         return points
@@ -83,7 +83,7 @@ def a_star(map: list, strt: tuple, end: tuple) -> list:
     open_list = []
     closed_list = []
 
-    open_list.append(Point(strt[0], strt[1]))
+    open_list.append(Cell(strt[0], strt[1]))
 
     while len(open_list) > 0:
         lowest, ind = find_lowest_fscore(open_list, strt, end)
