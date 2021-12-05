@@ -43,9 +43,10 @@ def draw_map(map: list):
     
     plt.scatter(present_x, present_y, s=150, c='blue')
     plt.scatter(obstacles_x, obstacles_y, s=150, c='black')
+    plt.savefig(f'./figures/map.png')
     plt.show()
     
-def draw_map_route(map: list, route: list, start: tuple, end: tuple):
+def draw_map_route(map: list, route: list, start: tuple, end: tuple, ind: int):
     present_y = []
     present_x = []
     obstacles_y = []
@@ -66,5 +67,6 @@ def draw_map_route(map: list, route: list, start: tuple, end: tuple):
     plt.scatter(present_x, present_y, s=200, c='blue')
     plt.scatter(obstacles_x, obstacles_y, s=200, c='black')
     plt.scatter(way_x, way_y, s=200, c='green')
-    plt.scatter([start[0], end[0]], [start[1], end[1]], s=200, c='yellow')
+    plt.scatter([start[1], end[1]], [start[0], end[0]], s=200, c='yellow')
+    plt.savefig(f'./figures/route{ind}.png')
     plt.show()
