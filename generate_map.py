@@ -1,4 +1,6 @@
 import random
+import networkx as nx
+import matplotlib.pyplot as plt
 
 OBSTACLES = 40
 
@@ -23,3 +25,46 @@ def new_map() -> list:
         map[x][y] = 'X'
     
     return map
+
+def draw_map(map: list):
+    present_y = []
+    present_x = []
+    obstacles_y = []
+    obstacles_x = []
+
+    for col in range(0, 10):
+        for row in range(0, 20):
+            if map[col][row] == 'X':
+                obstacles_x.append(row)
+                obstacles_y.append(col)
+            else:
+                present_x.append(row)
+                present_y.append(col)
+    
+    plt.scatter(present_x, present_y, s=150, c='blue')
+    plt.scatter(obstacles_x, obstacles_y, s=150, c='black')
+    plt.show()
+    
+def draw_map_route(map: list, route: list, start: tuple, end: tuple):
+    present_y = []
+    present_x = []
+    obstacles_y = []
+    obstacles_x = []
+
+    for col in range(0, 10):
+        for row in range(0, 20):
+            if map[col][row] == 'X':
+                obstacles_x.append(row)
+                obstacles_y.append(col)
+            else:
+                present_x.append(row)
+                present_y.append(col)
+
+    way_x = [r for c, r in route]
+    way_y = [c for c, r in route]
+
+    plt.scatter(present_x, present_y, s=200, c='blue')
+    plt.scatter(obstacles_x, obstacles_y, s=200, c='black')
+    plt.scatter(way_x, way_y, s=200, c='green')
+    plt.scatter([start[0], end[0]], [start[1], end[1]], s=200, c='yellow')
+    plt.show()
